@@ -133,7 +133,7 @@ export default function ProductActions({ product, onVariantImageChange }: Produc
           <div className="space-y-2">
             {allVariants.length > 0 && (
               <div className="flex flex-wrap gap-2">
-                {allVariants.map((variant) => {
+                {allVariants.map((variant: any) => {
                   const isSelected = variant.node.id === selectedVariantId
                   
                   // Extract variant parts

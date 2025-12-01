@@ -61,7 +61,7 @@ export default function CartSidebar() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {items.map((item) => (
+                  {items.map((item: any) => (
                     <div key={item.variantId} className="flex gap-4 pb-4 border-b border-luxury-dark/10">
                       <Link
                         href={`/products/${item.handle}`}

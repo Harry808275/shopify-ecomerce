@@ -36,7 +36,7 @@ export default function CheckoutPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          items: items.map((item) => ({
+          items: items.map((item: any) => ({
             variantId: item.variantId,
             quantity: item.quantity,
           })),
@@ -188,7 +188,7 @@ export default function CheckoutPage() {
               <h2 className="text-xl font-bold text-luxury-dark mb-6">Order Summary</h2>
               
               <div className="space-y-3 mb-6">
-                {items.map((item) => (
+                {items.map((item: any) => (
                   <div key={item.variantId} className="flex justify-between text-sm">
                     <span className="text-luxury-dark/70">
                       {item.title} × {item.quantity}

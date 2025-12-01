@@ -42,7 +42,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
   const [isHovered, setIsHovered] = useState(false)
   const [isAdding, setIsAdding] = useState(false)
   
-  const images = product.images.edges.map((edge) => edge.node)
+  const images = product.images.edges.map((edge: any) => edge.node)
   const mainImage = images[0]
   const secondImage = images[1]
   const price = product.priceRange.minVariantPrice
