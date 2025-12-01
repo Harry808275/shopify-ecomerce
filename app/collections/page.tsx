@@ -22,7 +22,7 @@ export default async function CollectionsPage() {
 
         {/* Collections Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {collections.map((collection) => (
+          {collections.map((collection: any) => (
             <Link
               key={collection.id}
               href={`/collections/${collection.handle}`}
