@@ -1,0 +1,299 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Evertrust Fonts */
+@font-face {
+  font-family: 'LouisVuitton';
+  src: url('/fonts/LouisVuitton-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LouisVuitton';
+  src: url('/fonts/LouisVuitton-Demi.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LouisVuitton';
+  src: url('/fonts/LouisVuitton-Oblique.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --header-height: 3.5rem;
+    --lv-black: #19110b;
+    --lv-gray: #767676;
+    --lv-light-gray: #e1e1e1;
+    --lv-orange: #d6852a;
+    --lv-transition: cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+
+  @media screen and (min-width: 48rem) {
+    :root {
+      --header-height: 5.5rem;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'LouisVuitton', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    color: var(--lv-black);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'LouisVuitton', serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  .text-lv {
+    font-family: 'LouisVuitton', serif;
+  }
+
+  .text-lv-demi {
+    font-family: 'LouisVuitton', serif;
+    font-weight: 600;
+  }
+
+  .transition-lv {
+    transition-timing-function: var(--lv-transition);
+  }
+}
+
+/* Hide Scrollbars */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* LV Page Loader */
+.lv-page-loader {
+  --progress: 0;
+}
+
+.lv-page-loader__bar {
+  height: 3px;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  width: auto;
+  z-index: 15;
+  background: var(--lv-gray);
+  left: 0;
+  right: 0;
+  transform: scaleX(calc(var(--progress) * 1%));
+  transform-origin: 0 0;
+  transition: transform 0.1s, opacity 0.4s;
+}
+
+.lv-page-loader__bar.-visible {
+  opacity: 1;
+}
+
+/* LV Skeleton Loading */
+.lv-skeleton {
+  --background-color: #f8f8f8;
+  --skeleton-color: 240, 240, 240;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  background: var(--background-color);
+}
+
+.lv-skeleton.-animate:after {
+  content: "";
+  height: 100%;
+  min-width: 100%;
+  position: absolute;
+  top: 0;
+  animation: skeleton 1.8s linear infinite;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--skeleton-color), 0) 0,
+    rgba(var(--skeleton-color), 1) 40%,
+    rgba(var(--skeleton-color), 1) 60%,
+    rgba(var(--skeleton-color), 0)
+  );
+  left: 0;
+  transform: translate(-50%) skew(-15deg);
+  transform-origin: bottom right;
+}
+
+@keyframes skeleton {
+  0% {
+    transform: translate(-100%) skew(-15deg);
+  }
+  70% {
+    transform: translate(100%) skew(-15deg);
+  }
+  100% {
+    transform: translate(100%) skew(-15deg);
+  }
+}
+
+/* LV Smart Picture */
+.lv-smart-picture {
+  height: 100%;
+  position: relative;
+}
+
+.lv-smart-picture picture {
+  bottom: 0;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  transition: opacity 0.3s var(--lv-transition);
+}
+
+.lv-smart-picture img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.lv-smart-picture.is-loaded picture {
+  opacity: 1;
+}
+
+/* LV Button Styles */
+.lv-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: 'LouisVuitton', serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--lv-black);
+  background: transparent;
+  color: var(--lv-black);
+  cursor: pointer;
+  transition: all 0.3s var(--lv-transition);
+  text-decoration: none;
+}
+
+.lv-button:hover {
+  background: var(--lv-black);
+  color: #fff;
+}
+
+.lv-button.-primary {
+  background: var(--lv-black);
+  color: #fff;
+}
+
+.lv-button.-primary:hover {
+  background: transparent;
+  color: var(--lv-black);
+}
+
+.lv-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: 'LouisVuitton', serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--lv-gray);
+  background: transparent;
+  color: var(--lv-gray);
+  cursor: pointer;
+  transition: all 0.3s var(--lv-transition);
+  text-decoration: none;
+}
+
+.lv-button-secondary:hover {
+  border-color: var(--lv-black);
+  color: var(--lv-black);
+}
+
+/* LV Link Styles */
+.lv-link {
+  color: var(--lv-black);
+  text-decoration: none;
+  transition: color 0.3s var(--lv-transition);
+  position: relative;
+}
+
+.lv-link:hover {
+  color: var(--lv-gray);
+}
+
+.lv-link:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--lv-black);
+  transition: width 0.3s var(--lv-transition);
+}
+
+.lv-link:hover:after {
+  width: 100%;
+}
+
+/* Line Clamp Utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
