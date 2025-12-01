@@ -16,7 +16,7 @@ export default function ScrollAnimations({ children }: { children: React.ReactNo
 
     const elements = ref.current.querySelectorAll('[data-animate]')
     
-    elements.forEach((element) => {
+    elements.forEach((element: Element) => {
       gsap.fromTo(
         element,
         {
@@ -38,7 +38,7 @@ export default function ScrollAnimations({ children }: { children: React.ReactNo
     })
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+      ScrollTrigger.getAll().forEach((trigger: any) => trigger.kill())
     }
   }, [])
 

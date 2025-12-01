@@ -63,7 +63,7 @@ export default function FAQ() {
         </div>
 
         <div className="space-y-4">
-          {faqData.map((faq, index) => (
+          {faqData.map((faq: FAQItem, index: number) => (
             <div
               key={index}
               className="border border-lv-light-gray rounded-lg overflow-hidden"

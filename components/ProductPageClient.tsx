@@ -283,7 +283,7 @@ export default function ProductPageClient({ product, images, price, maxPrice, ha
             </div>
 
             <div className="space-y-3">
-              {faqConfig.faqs.map((faq, index) => {
+              {faqConfig.faqs.map((faq: any, index: number) => {
                 const isOpen = openFaqs.includes(index)
                 return (
                   <motion.div

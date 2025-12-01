@@ -115,7 +115,7 @@ export default function ProductImageGallery({ images, productTitle, onImageChang
       {/* Thumbnail Gallery - Properly Aligned, No Overlap */}
       {images.length > 1 && (
         <div className="grid grid-cols-4 gap-2.5">
-          {images.map((image, index) => (
+          {images.map((image: any, index: number) => (
             <motion.button
               key={index}
               onClick={() => {

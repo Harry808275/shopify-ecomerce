@@ -54,7 +54,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const existingItem = prevItems.find((i) => i.variantId === item.variantId)
       
       if (existingItem) {
-        return prevItems.map((i) =>
+        return prevItems.map((i: CartItem) =>
           i.variantId === item.variantId
             ? { ...i, quantity: i.quantity + 1 }
             : i
@@ -67,7 +67,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }
 
   const removeItem = (variantId: string) => {
-    setItems((prevItems) => prevItems.filter((i) => i.variantId !== variantId))
+    setItems((prevItems) => prevItems.filter((i: CartItem) => i.variantId !== variantId))
   }
 
   const updateQuantity = (variantId: string, quantity: number) => {
@@ -77,7 +77,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
     
     setItems((prevItems) =>
-      prevItems.map((i) =>
+      prevItems.map((i: CartItem) =>
         i.variantId === variantId ? { ...i, quantity } : i
       )
     )
