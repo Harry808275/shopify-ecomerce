@@ -27,7 +27,8 @@ export default function ScrollAnimations({ children }: { children: React.ReactNo
           opacity: 1,
           y: 0,
           duration: 1,
-          ease: [0.39, 0.575, 0.565, 1],
+          // Use a named ease to satisfy GSAP's TypeScript types
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: element,
             start: 'top 80%',
