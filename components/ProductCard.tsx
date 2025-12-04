@@ -38,7 +38,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, priority = false }: ProductCardProps) {
-  const { addItem, openCart } = useCart()
+  const { addItem, setIsOpen } = useCart()
   const [isHovered, setIsHovered] = useState(false)
   const [isAdding, setIsAdding] = useState(false)
   
@@ -67,15 +67,14 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       title: product.title,
       handle: product.handle,
       variantTitle: 'Default',
-      price: parseFloat(price.amount),
+      price: price.amount,
       currencyCode: price.currencyCode,
       image: mainImage?.url || '',
-      quantity: 1,
     })
     
     setTimeout(() => {
       setIsAdding(false)
-      openCart()
+      setIsOpen(true)
     }, 300)
   }
 
